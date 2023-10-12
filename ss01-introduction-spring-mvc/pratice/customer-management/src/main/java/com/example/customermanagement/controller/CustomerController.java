@@ -19,4 +19,9 @@ public class CustomerController {
     public ModelAndView showList() {
         return new ModelAndView("index","listCustomer",customerService.displayListCustomer());
     }
+
+    @GetMapping("/customers/info")
+    public ModelAndView showInfo(int id) {
+        return new ModelAndView("info","customer",customerService.findById(id));
+    }
 }

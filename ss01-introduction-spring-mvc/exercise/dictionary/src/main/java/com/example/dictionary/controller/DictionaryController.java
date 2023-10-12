@@ -1,5 +1,7 @@
 package com.example.dictionary.controller;
 
+import com.example.dictionary.service.IDictionaryService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -10,22 +12,10 @@ import java.util.Map;
 
 @Controller
 @RequestMapping
-public class DictionaryController {
-    private static final Map<String, String> mapDictionary;
-    static {
-        mapDictionary = new HashMap<>();
-        mapDictionary.put("Blackberry","Dâu đen");
-        mapDictionary.put("Cherry","Trái anh đào");
-        mapDictionary.put("Lemon","Chanh vàng");
-        mapDictionary.put("Orange","Cam");
-        mapDictionary.put("Apple","Táo");
-        mapDictionary.put("Banana","Trái chuối");
-        mapDictionary.put("Grape","Nho");
-        mapDictionary.put("Mango","Xoài");
-        mapDictionary.put("Melon","Dưa");
-        mapDictionary.put("Watermelon","Dưa hấu");
-    }
 
+public class DictionaryController {
+    @Autowired
+    private IDictionaryService dictionaryService;
 
     @GetMapping
     public ModelAndView showHomePage(){
@@ -34,7 +24,6 @@ public class DictionaryController {
 
     @GetMapping("/convert")
     public ModelAndView displayResultDictionary(String eng){
-        String result = mapDictionary.getOrDefault(eng, "Không tìm thấy");
-        return new ModelAndView("index","result", result);
+        return new ModelAndView("index","result", dictionaryService.displayResultDictionary(eng));
     }
 }

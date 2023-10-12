@@ -6,4 +6,5 @@ import java.util.List;
 
 public interface ICustomerRepo {
     List<Customer> displayListCustomer();
+    Customer findById(int id);
 }

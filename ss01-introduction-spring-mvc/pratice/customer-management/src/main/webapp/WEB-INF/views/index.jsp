@@ -16,6 +16,7 @@ There are ${listCustomer.size()} customer(s) in list.
         <th>Name</th>
         <th>Email</th>
         <th>Address</th>
+        <th>Thao tác</th>
     </tr>
     </thead>
     <tbody>
@@ -25,6 +26,7 @@ There are ${listCustomer.size()} customer(s) in list.
             <td>${listCustomer.name}</td>
             <td>${listCustomer.email}</td>
             <td>${listCustomer.address}</td>
+            <td><a href="/customers/info?id=${listCustomer.id}">Xem</a></td>
         </tr>
     </c:forEach>
     </tbody>

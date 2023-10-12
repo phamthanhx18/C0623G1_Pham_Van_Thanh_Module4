@@ -22,4 +22,14 @@ public class CustomerRepo implements ICustomerRepo{
     public List<Customer> displayListCustomer() {
         return customerList;
     }
+
+    @Override
+    public Customer findById(int id) {
+        for (Customer customer:customerList) {
+            if (customer.getId() == id) {
+                return customer;
+            }
+        }
+        return null;
+    }
 }

@@ -16,4 +16,9 @@ public class CustomerService implements ICustomerService{
     public List<Customer> displayListCustomer() {
         return customerRepo.displayListCustomer();
     }
+
+    @Override
+    public Customer findById(int id) {
+        return customerRepo.findById(id);
+    }
 }

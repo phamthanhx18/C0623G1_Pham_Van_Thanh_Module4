@@ -1,4 +1,4 @@
-package com.example.currencyconversion.controller;
+package com.example.currency_conversion.controller;
 
 
 import org.springframework.stereotype.Controller;

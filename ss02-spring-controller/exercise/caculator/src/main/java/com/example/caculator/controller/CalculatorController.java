@@ -25,8 +25,11 @@ public class CalculatorController {
                                    @RequestParam(name = "number-b") int numberB, String type) {
         try {
             return new ModelAndView("index", "result", calculatorService.calculator(numberA, numberB, type));
+        } catch (ArithmeticException e) {
+            return new ModelAndView("index", "error", "Phép chia số B phải khác 0");
         } catch (Exception e) {
-            return new ModelAndView("index", "error", e.getMessage());
+            System.out.println(e.getMessage());
+            return new ModelAndView("index", "error", "Đã có lỗi xảy ra");
         }
     }
 }

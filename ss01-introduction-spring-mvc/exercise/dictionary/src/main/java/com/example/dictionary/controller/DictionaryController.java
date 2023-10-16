@@ -3,12 +3,10 @@ package com.example.dictionary.controller;
 import com.example.dictionary.service.IDictionaryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
-
-import java.util.HashMap;
-import java.util.Map;
 
 @Controller
 @RequestMapping
@@ -23,7 +21,9 @@ public class DictionaryController {
     }
 
     @GetMapping("/convert")
-    public ModelAndView displayResultDictionary(String eng){
-        return new ModelAndView("index","result", dictionaryService.displayResultDictionary(eng));
+    public ModelAndView displayResultDictionary(Model model,String eng){
+        model.addAttribute("eng",eng);
+        model.addAttribute("vi",dictionaryService.displayResultDictionary(eng));
+        return new ModelAndView("index");
     }
 }

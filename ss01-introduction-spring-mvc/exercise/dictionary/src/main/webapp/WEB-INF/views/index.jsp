@@ -9,8 +9,8 @@
     <label for="eng"> Nhập từ tiếng anh cần tra cứu</label> <br>
     <input type="text" name="eng" id="eng"> <br><br>
     <input type="submit" value="Tra cứu">
-    <c:if test="${not empty result}">
-        <p>${result}</p>
+    <c:if test="${not empty vi}">
+        <p>Kết quả của từ <b>${eng}</b> là <b>${vi}</b></p>
     </c:if>
 </form>
 </body>

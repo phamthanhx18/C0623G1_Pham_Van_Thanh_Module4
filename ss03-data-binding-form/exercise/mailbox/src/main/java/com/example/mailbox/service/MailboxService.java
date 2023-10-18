@@ -8,7 +8,7 @@ import org.springframework.stereotype.Service;
 @Service
 public class MailboxService implements IMailboxService{
     @Autowired
-    IMailboxRepo mailboxRepo;
+    private IMailboxRepo mailboxRepo;
     @Override
     public Mailbox getMailbox() {
         return mailboxRepo.getMailbox();

@@ -13,7 +13,7 @@ import org.springframework.web.servlet.ModelAndView;
 @Controller
 public class MailboxController {
     @Autowired
-    IMailboxService mailboxService;
+    private IMailboxService mailboxService;
 
     @GetMapping("/setting")
     public String showSettings(Model model) {

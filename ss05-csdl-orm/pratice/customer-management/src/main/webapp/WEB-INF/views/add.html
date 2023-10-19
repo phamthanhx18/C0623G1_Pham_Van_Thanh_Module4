@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head th:include="/template/header.html"></head>
+<body>
+<div class="container">
+    <h2 class="my-5">Add new Customer</h2>
+    <form method="post" th:object="${customer}">
+        <div class="row">
+            <div class="mb-3">
+                <label for="nameCustomer" class="form-label">Name Customer</label>
+                <input type="text" th:field="${customer.name}" class="form-control" id="nameCustomer">
+            </div>
+            <div class="mb-3">
+                <label for="descriptionCustomer" class="form-label">Email</label>
+                <textarea th:field="${customer.email}" class="form-control" id="descriptionCustomer"
+                          rows="3"></textarea>
+            </div>
+            <div class="mb-3">
+                <label for="priceCustomer" class="form-label">Address</label>
+                <input type="text" th:field="${customer.address}" class="form-control" id="priceCustomer">
+            </div>
+            <div class="mb-3">
+                <button class="btn btn-primary" type="submit">Add Customer</button>
+            </div>
+        </div>
+    </form>
+</div>
+
+<footer th:include="/template/footer.html"></footer>
+</body>
+</html>

@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head th:include="/template/header.html"></head>
+<body>
+<div class="container">
+  <div class="row my-5">
+    <h2>Information</h2>
+    <p th:text="${'ID: '+ product.id}"></p>
+    <p th:text="${'NAME: '+ product.name}"></p>
+    <p th:text="${'DESCRIPTION: '+ product.description}"></p>
+    <p th:text="${'PRICE: '+ product.price}"></p>
+  </div>
+</div>
+
+<footer th:include="/template/footer.html"></footer>
+</body>
+</html>

@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head th:include="/layout/header.html"></head>
+<body>
+<div class="container">
+  <div th:object="${blog}" class="row my-5">
+    <h1 th:text="${blog.title}" class="bd-title mb-0" id="content">Background</h1>
+    <p class="blog-post-meta">Post by <a th:text="${blog.author}" href="#">Mark</a>, Category: <a th:text="${blog.category.name}" th:href="@{/category/__${blog.category.id}__/view}">Mark</a></p>
+    <div>
+      <img width="100%" th:src="${blog.img}" th:alt="${blog.title}">
+    </div>
+    <p th:text="${blog.summary}"></p>
+    <hr>
+    <div th:text="${blog.content}"></div>
+  </div>
+</div>
+
+<footer th:include="/layout/footer.html"></footer>
+</body>
+</html>

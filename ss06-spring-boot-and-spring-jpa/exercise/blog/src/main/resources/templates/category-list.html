@@ -27,6 +27,17 @@
         </tr>
         </tbody>
     </table>
+    <!-- Pagination -->
+    <nav aria-label="Page navigation example">
+        <ul class="pagination justify-content-center">
+            <li th:class="${category.hasPrevious() ? 'page-item' : 'page-item disabled'}">
+                <a class="page-link" th:href="@{/category/list/(page=${category.number - 1})}">Last</a>
+            </li>
+            <li th:class="${category.hasNext() ? 'page-item' : 'page-item disabled'}">
+                <a class="page-link" th:href="@{/category/list/(page=${category.number + 1})}">Next</a>
+            </li>
+        </ul>
+    </nav>
 </div>
 <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">

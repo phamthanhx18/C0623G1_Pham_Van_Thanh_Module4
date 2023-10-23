@@ -1,23 +1,26 @@
 package com.example.blog.model;
 
 import javax.persistence.*;
+import java.util.Set;
 
 @Entity
 @Table(name = "category_blog")
 public class Category {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name="id_category")
     private Integer id;
-    @Column(name="name_category")
     private String name;
+
+    @OneToMany(mappedBy = "category")
+    private Set<Blog> blog;
 
     public Category() {
     }
 
-    public Category(Integer id, String name) {
+    public Category(Integer id, String name, Set<Blog> blog) {
         this.id = id;
         this.name = name;
+        this.blog = blog;
     }
 
     public Integer getId() {
@@ -34,5 +37,13 @@ public class Category {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public Set<Blog> getBlog() {
+        return blog;
+    }
+
+    public void setBlog(Set<Blog> blog) {
+        this.blog = blog;
     }
 }

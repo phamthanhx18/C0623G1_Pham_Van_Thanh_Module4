@@ -16,7 +16,7 @@ public class Blog {
     private String img;
     private String timePost;
     @ManyToOne
-    @JoinColumn(name = "id_category")
+    @JoinColumn(name = "id_category", referencedColumnName = "id")
     private Category category;
 
     public Blog() {
@@ -31,6 +31,17 @@ public class Blog {
         this.img = img;
         this.category = category;
         this.timePost = timePost;
+    }
+
+    public Blog(Integer id, String title, String content, String summary, String author, String img, String timePost, Category category) {
+        this.id = id;
+        this.title = title;
+        this.content = content;
+        this.summary = summary;
+        this.author = author;
+        this.img = img;
+        this.timePost = timePost;
+        this.category = category;
     }
 
     public Integer getId() {
@@ -81,19 +92,19 @@ public class Blog {
         this.img = img;
     }
 
-    public Category getCategory() {
-        return category;
-    }
-
-    public void setCategory(Category category) {
-        this.category = category;
-    }
-
     public String getTimePost() {
         return timePost;
     }
 
     public void setTimePost(String timePost) {
         this.timePost = timePost;
+    }
+
+    public Category getCategory() {
+        return category;
+    }
+
+    public void setCategory(Category category) {
+        this.category = category;
     }
 }

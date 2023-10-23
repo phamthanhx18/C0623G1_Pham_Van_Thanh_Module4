@@ -5,6 +5,9 @@ import com.example.blog.service.IBlogService;
 import com.example.blog.service.ICategoryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
+import org.springframework.data.web.PageableDefault;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -21,20 +24,13 @@ public class BlogController {
 
 
     @GetMapping
-    public ModelAndView showHome(Model model){
+    public ModelAndView showHome(){
         return new ModelAndView("index","blogs",blogService.findAllBlog());
     }
 
     @GetMapping("/blog/list")
-    public String showList(Model model,
-                           @RequestParam(defaultValue = "0") int pageNumber,
-                           @RequestParam(defaultValue = "1") int pageSize) {
-        Page<Blog> blogPage = blogService.findAllBlog(pageNumber, pageSize);
-        model.addAttribute("blogs", blogPage.getContent());
-        model.addAttribute("pageNumber", pageNumber);
-        model.addAttribute("pageSize", pageSize);
-        model.addAttribute("totalPages", blogPage.getTotalPages());
-        return "list";
+    public ModelAndView showList(@PageableDefault(value = 2,sort = "timePost",direction = Sort.Direction.DESC) Pageable pageable) {
+        return new ModelAndView("list","blogs",blogService.findAllBlog(pageable));
     }
 
     @GetMapping("/blog/add")

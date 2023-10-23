@@ -17,9 +17,7 @@ public class BlogService implements IBlogService{
     @Autowired
     private IBlogRepository blogRepository;
     @Override
-    public Page<Blog> findAllBlog(int pageNumber, int pageSize) {
-        Sort sort = Sort.by(Sort.Direction.DESC, "timePost");
-        Pageable pageable = PageRequest.of(pageNumber, pageSize, sort);
+    public Page<Blog> findAllBlog(Pageable pageable) {
         return blogRepository.findAll(pageable);
     }
 
@@ -27,7 +25,6 @@ public class BlogService implements IBlogService{
     public List<Blog> findAllBlog() {
         return blogRepository.findAll();
     }
-
 
     @Override
     public void createBlog(Blog blog) {

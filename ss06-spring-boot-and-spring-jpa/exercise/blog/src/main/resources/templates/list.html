@@ -34,11 +34,11 @@
     <!-- Pagination -->
     <nav aria-label="Page navigation example">
         <ul class="pagination justify-content-center">
-            <li th:class="${pageNumber == 0 ? 'page-item disabled' : 'page-item'}">
-                <a class="page-link" th:href="@{/blog/list/(pageNumber=${pageNumber - 1})}">Last</a>
+            <li th:class="${blogs.hasPrevious() ? 'page-item' : 'page-item disabled'}">
+                <a class="page-link" th:href="@{/blog/list/(page=${blogs.number - 1})}">Last</a>
             </li>
-            <li th:class="${pageNumber == totalPages - 1 ? 'page-item disabled' : 'page-item'}">
-                <a class="page-link" th:href="@{/blog/list/(pageNumber=${pageNumber + 1})}">Next</a>
+            <li th:class="${blogs.hasNext() ? 'page-item' : 'page-item disabled'}">
+                <a class="page-link" th:href="@{/blog/list/(page=${blogs.number + 1})}">Next</a>
             </li>
         </ul>
     </nav>

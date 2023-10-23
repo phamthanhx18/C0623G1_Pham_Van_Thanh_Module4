@@ -4,6 +4,9 @@ import com.example.blog.model.Category;
 import com.example.blog.service.IBlogService;
 import com.example.blog.service.ICategoryService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
+import org.springframework.data.web.PageableDefault;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -19,8 +22,8 @@ public class CategoryController {
     private IBlogService blogService;
 
     @GetMapping("/list")
-    public ModelAndView showListCategory(){
-        return new ModelAndView("category-list","category",categoryService.findAllCategory());
+    public ModelAndView showListCategory(@PageableDefault(value = 2) Pageable pageable){
+        return new ModelAndView("category-list","category",categoryService.findAllCategory(pageable));
     }
 
     @GetMapping("/add")

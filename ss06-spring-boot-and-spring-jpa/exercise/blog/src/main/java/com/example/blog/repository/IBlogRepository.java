@@ -8,7 +8,6 @@ import org.springframework.data.repository.query.Param;
 import java.util.List;
 
 public interface IBlogRepository extends JpaRepository<Blog,Integer> {
-
     @Query(nativeQuery = true,value = "select summary from Blog where id = :param")
     String getSummaryById(@Param("param") Integer id);
     @Query(nativeQuery = true,value = "select * from Blog where id_category = :param")

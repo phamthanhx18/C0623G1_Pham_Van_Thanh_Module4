@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head th:fragment="head">
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/libs/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/libs/fontawesome/css/all.min.css">
+    <link rel="stylesheet" href="/css/main.css">
+    <link href='https://fonts.googleapis.com/css?family=Quicksand' rel='stylesheet'>
+    <link href='https://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet'>
+</head>
+<body>
+<header th:fragment="header" class="my-3">
+    <nav class="navbar navbar-expand-lg bg-body-tertiary">
+        <a class="navbar-brand" href="#">
+            <img src="/image/logo-MOVIES24H.png" alt="Logo Website">
+        </a>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="#">Trang chủ</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Lịch chiếu</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Top phim</a>
+                </li>
+            </ul>
+            <form class="d-flex px-3" role="search" action="/search">
+                <input type="search" class="form-control" name="search-film" placeholder="Tìm kiếm" aria-label="Search">
+            </form>
+            <div class="d-flex">
+                <div class="avatar-user">
+                    <img src="https://github.com/mdo.png" alt="mdo" width="32" height="32" class="rounded-circle">
+                </div>
+                <div class="info-user-header">
+                    <div class="dropdown d-flex justify-content-end">
+                        <button class="btn-login btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton"
+                                data-bs-toggle="dropdown" aria-expanded="false">
+                            Phạm Văn Thành
+                        </button>
+                        <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                            <li><a class="dropdown-item" href="/dashboard">Dashboard</a></li>
+                            <li><a class="dropdown-item" href="/dashboard/course">Quản lý khóa học</a></li>
+                            <li><a class="dropdown-item" href="/dashboard/order">Quản lý đơn hàng</a></li>
+                            <li><a class="dropdown-item" href="/dashboard/member">Quản lý thành viên</a></li>
+                            <li>
+                                <hr class="dropdown-divider">
+                            </li>
+                            <li><a class="dropdown-item" href="/user/logout">Đăng xuất</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+</header>
+
+<footer th:fragment="footer">
+    <script src="/libs/bootstrap/js/bootstrap.bundle.js"></script>
+    <script src="/js/main.js"></script>
+</footer>
+</body>
+</html>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head th:replace="~{layout::head}">
+</head>
+<body>
+<div class="container">
+    <header class="d-flex flex-wrap justify-content-center py-3 mb-4 border-bottom">
+        <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-dark text-decoration-none">
+            <span class="fs-4">Home</span>
+        </a>
+
+        <ul class="nav nav-pills">
+            <li class="nav-item"><a href="/rental/give/book" class="nav-link">Tra sach</a></li>
+        </ul>
+    </header>
+    <section>
+        <div th:each="book: ${books}" class="row mt-3">
+            <div class="col-lg-3">
+                <div class="card" style="width: 18rem;">
+                    <img th:src="${book.image}" class="card-img-top" th:alt="${book.name}">
+                    <div class="card-body">
+                        <h5 class="card-title" th:text="${book.name}"></h5>
+                        <p class="card-subtitle" th:text="${'Số lượng: '+book.count}"></p>
+                        <a th:href="@{/rental/__${book.id}__}" class="btn btn-primary">Mượn sách</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+<footer th:replace="~{layout::footer}"></footer>
+</body>
+</html>

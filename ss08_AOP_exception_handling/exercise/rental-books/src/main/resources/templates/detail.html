@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head th:replace="~{layout::head}">
+</head>
+<body>
+<div class="container">
+    <header class="d-flex flex-wrap justify-content-center py-3 mb-4 border-bottom">
+        <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-dark text-decoration-none">
+            <svg class="bi me-2" width="40" height="32">
+                <use xlink:href="#bootstrap"></use>
+            </svg>
+            <span class="fs-4">Simple header</span>
+        </a>
+
+        <ul class="nav nav-pills">
+            <li class="nav-item"><a href="#" class="nav-link active" aria-current="page">Home</a></li>
+            <li class="nav-item"><a href="#" class="nav-link">Features</a></li>
+            <li class="nav-item"><a href="#" class="nav-link">Pricing</a></li>
+            <li class="nav-item"><a href="#" class="nav-link">FAQs</a></li>
+            <li class="nav-item"><a href="#" class="nav-link">About</a></li>
+        </ul>
+    </header>
+    <section>
+        <div class="row mt-3">
+            <div class="col-lg-3">
+                <div class="card" style="width: 18rem;">
+                    <img th:src="${book.image}" class="card-img-top" th:alt="${book.name}">
+                    <div class="card-body">
+                        <h5 class="card-title" th:text="${book.name}"></h5>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-9">
+                <h2 th:text="${'Tác giả: '+book.author}"></h2>
+                <h4 th:text="${'Số lượng sách còn lại '+book.count}"></h4>
+                <h4 th:text="${'Mã thuê của bạn '+rand}"></h4>
+            </div>
+        </div>
+    </section>
+</div>
+<footer th:replace="~{layout::footer}"></footer>
+</body>
+</html>

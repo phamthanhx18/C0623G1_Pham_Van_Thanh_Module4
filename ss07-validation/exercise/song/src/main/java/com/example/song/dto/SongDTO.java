@@ -6,7 +6,7 @@ import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 import java.lang.annotation.Annotation;
 
-public class SongDTO implements Validated {
+public class SongDTO {
 
     @Size(max = 800,message = "Không được vượt quá 800 ký tự")
     @Pattern(regexp = "^[a-zA-Z0-9]{1,}$",message = "Chỉ được phép nhập chữ và số, không được phép nhập kí tự đặc biệt !")
@@ -45,15 +45,5 @@ public class SongDTO implements Validated {
 
     public void setTypeMusic(String typeMusic) {
         this.typeMusic = typeMusic;
-    }
-
-    @Override
-    public Class<?>[] value() {
-        return new Class[0];
-    }
-
-    @Override
-    public Class<? extends Annotation> annotationType() {
-        return null;
     }
 }

@@ -19,7 +19,7 @@ import javax.validation.Valid;
 @RequestMapping
 public class UserController {
     @Autowired
-    IUserService userService;
+    private IUserService userService;
 
     @GetMapping
     public ModelAndView showFormCreate(){

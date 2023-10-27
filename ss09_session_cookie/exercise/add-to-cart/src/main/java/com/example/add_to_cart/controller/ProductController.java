@@ -51,9 +51,9 @@ public class ProductController {
     }
 
     @GetMapping("/add-to-cart/{id}")
-    public ModelAndView addToCart(@PathVariable Long id, @SessionAttribute("cart") CartDto cartDto){
+    public String addToCart(@PathVariable Long id, @SessionAttribute("cart") CartDto cartDto){
         Product product = productService.findById(id).get();
         cartDto.addProduct(product);
-            return new ModelAndView("redirect:/cart");
+            return "redirect:/cart";
     }
 }

@@ -15,20 +15,20 @@ public class ShoppingController {
     }
 
     @GetMapping("/{id}/plus")
-    public ModelAndView plusProduct(@PathVariable Long id,@SessionAttribute(value = "cart",required = false) CartDto cartDto) {
+    public String plusProduct(@PathVariable Long id,@SessionAttribute(value = "cart",required = false) CartDto cartDto) {
         cartDto.plusCountProduct(id);
-        return new ModelAndView("redirect:/cart");
+        return "redirect:/cart";
     }
 
     @GetMapping("/{id}/decrease")
-    public ModelAndView decreaseProduct(@PathVariable Long id,@SessionAttribute(value = "cart",required = false) CartDto cartDto) {
+    public String decreaseProduct(@PathVariable Long id,@SessionAttribute(value = "cart",required = false) CartDto cartDto) {
         cartDto.decreaseCountProduct(id);
-        return new ModelAndView("redirect:/cart");
+        return "redirect:/cart";
     }
 
     @GetMapping("/{id}/delete")
-    public ModelAndView deleteToCard(@PathVariable Long id,@SessionAttribute(value = "cart",required = false) CartDto cartDto) {
+    public String deleteToCard(@PathVariable Long id,@SessionAttribute(value = "cart",required = false) CartDto cartDto) {
         cartDto.deleteToCard(id);
-        return new ModelAndView("redirect:/cart");
+        return "redirect:/cart";
     }
 }

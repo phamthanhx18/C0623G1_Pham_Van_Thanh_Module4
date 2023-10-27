@@ -46,7 +46,7 @@
         <tr>
             <td>Age:</td>
             <td>
-                <input type="text" th:field="*{age}">
+                <input type="date" th:field="*{age}">
                 <span th:if="${#fields.hasErrors('age')}" th:errors="*{age}" required></span>
             </td>
         </tr>

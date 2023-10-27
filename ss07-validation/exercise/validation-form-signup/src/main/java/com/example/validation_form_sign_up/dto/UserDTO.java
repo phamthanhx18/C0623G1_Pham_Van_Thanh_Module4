@@ -1,11 +1,14 @@
 package com.example.validation_form_sign_up.dto;
 
-import org.springframework.validation.annotation.Validated;
+import org.springframework.validation.Errors;
+import org.springframework.validation.Validator;
 
 import javax.validation.constraints.*;
-import java.lang.annotation.Annotation;
+import java.time.LocalDate;
+import java.time.Period;
+import java.util.Date;
 
-public class UserDTO implements Validated {
+public class UserDTO implements Validator {
 
     @NotEmpty(message = "Không được để trống")
     @Size(min = 6,message = "Không được bé hơn 8 kí tự")
@@ -28,11 +31,13 @@ public class UserDTO implements Validated {
     @Pattern(regexp = "(84|0[3|5|7|8|9])+([0-9]{8})",message = "Không đúng định dạng số điện thoại")
     private String phoneNumber;
 
-    @Min(value = 18,message = "Không được dưới 18 tuổi")
-    private Integer age;
+    private String age;
 
     @Email(message = "Khong dung dinh dang email")
     private String email;
+
+    public UserDTO() {
+    }
 
     public String getUsername() {
         return username;
@@ -74,11 +79,11 @@ public class UserDTO implements Validated {
         this.phoneNumber = phoneNumber;
     }
 
-    public Integer getAge() {
+    public String getAge() {
         return age;
     }
 
-    public void setAge(Integer age) {
+    public void setAge(String age) {
         this.age = age;
     }
 
@@ -91,12 +96,16 @@ public class UserDTO implements Validated {
     }
 
     @Override
-    public Class<?>[] value() {
-        return new Class[0];
+    public boolean supports(Class<?> clazz) {
+        return false;
     }
 
     @Override
-    public Class<? extends Annotation> annotationType() {
-        return null;
+    public void validate(Object target, Errors errors) {
+        UserDTO userDTO = (UserDTO) target;
+        LocalDate age = LocalDate.parse(userDTO.getAge());
+        if (Period.between(age, LocalDate.now()).getYears() < 18){
+            errors.rejectValue("age","age.under.accept","Không được dưới 18 tuổi");
+        }
     }
 }

@@ -15,13 +15,13 @@ public class User {
     private String firstName;
     private String lastName;
     private String phoneNumber;
-    private Integer age;
+    private String age;
     private String email;
 
     public User() {
     }
 
-    public User(Integer id, String username, String password, String firstName, String lastName, String phoneNumber, Integer age, String email) {
+    public User(Integer id, String username, String password, String firstName, String lastName, String phoneNumber, String age, String email) {
         this.id = id;
         this.username = username;
         this.password = password;
@@ -80,11 +80,11 @@ public class User {
         this.phoneNumber = phoneNumber;
     }
 
-    public Integer getAge() {
+    public String getAge() {
         return age;
     }
 
-    public void setAge(Integer age) {
+    public void setAge(String age) {
         this.age = age;
     }
 

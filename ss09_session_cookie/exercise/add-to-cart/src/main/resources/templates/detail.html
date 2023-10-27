@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head th:replace="~{layout::head}">
+</head>
+<body>
+<header th:replace="~{layout::header}"></header>
+<div class="container">
+    <div class="row">
+        <h2>Chi tiết sản phẩm</h2>
+        <div class="col-lg-3">
+            <div class="card">
+                <img style="max-height: 200px" class="card-img-top" th:src="${'/image/'+product.image}"
+                     th:alt="${product.name}">
+                <div class="card-body">
+                    <h5 class="card-title" th:text="${product.name}">Card title</h5>
+                    <p class="card-text" th:text="${product.description}">Some quick example text to build on the card
+                        title and make up the bulk of the card's content.</p>
+                    <p class="fs-4 fw-bold text-danger" th:text="${product.price}">Some quick example text to build on
+                        the card title and make up the bulk of the card's content.</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-9">
+            <div class="info-product">
+                <div class="alert alert-success" role="alert">
+                    <h4 class="alert-heading">Khuyến mãi</h4>
+                    <p>Nhập mã MMSALE100 giảm ngay 1% tối đa 100.000đ khi thanh toán qua MOMO (Xem chi tiết tại đây)</p>
+                    <p>Không áp dụng chung với khuyến mãi khác.</p>
+                    <p>Khuyến mãi chưa bao gồm phí giao/chuyển hàng.</p>
+                </div>
+                <a th:href="@{/add-to-cart/__${product.id}__}" role="button" class="btn btn-primary">Thêm vào giỏ hàng</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<footer th:replace="~{layout::footer}"></footer>
+</body>
+</html>

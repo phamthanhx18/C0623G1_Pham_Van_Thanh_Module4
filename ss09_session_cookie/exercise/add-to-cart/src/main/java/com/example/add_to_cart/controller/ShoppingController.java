@@ -25,4 +25,10 @@ public class ShoppingController {
         cartDto.decreaseCountProduct(id);
         return new ModelAndView("redirect:/cart");
     }
+
+    @GetMapping("/{id}/delete")
+    public ModelAndView deleteToCard(@PathVariable Long id,@SessionAttribute(value = "cart",required = false) CartDto cartDto) {
+        cartDto.deleteToCard(id);
+        return new ModelAndView("redirect:/cart");
+    }
 }

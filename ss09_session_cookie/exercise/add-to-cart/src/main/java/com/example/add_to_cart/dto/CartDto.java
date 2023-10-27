@@ -86,4 +86,12 @@ public class CartDto {
             }
         }
     }
+
+    public void deleteToCard(Long idProduct){
+        for (Map.Entry<Product, Integer> entry : products.entrySet()) {
+            if (entry.getKey().getId() == idProduct) {
+                products.remove(entry.getKey());
+            }
+        }
+    }
 }

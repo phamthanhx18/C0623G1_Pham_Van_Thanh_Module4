@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head th:include="/layout/header.html"></head>
+<body>
+<div class="container">
+  <h2 th:text="${'Post on category '+category.name}"></h2>
+  <div class="row">
+    <div th:each="blog,loop : ${blogs}" class="col-lg-3">
+      <div class="card" style="width: 18rem;">
+        <img th:src="${blog.img}" class="card-img-top" alt="...">
+        <div class="card-body">
+          <h5 th:text="${blog.title}" class="card-title"></h5>
+          <p th:text="${blog.summary}" class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+          <a th:href="@{/blog/__${blog.id}__/view}" class="btn btn-primary">Xem</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<footer th:include="/layout/footer.html"></footer>
+</body>
+</html>

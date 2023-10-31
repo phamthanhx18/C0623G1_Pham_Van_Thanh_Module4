@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head th:include="/layout/header.html"></head>
+<body>
+<div class="container">
+    <form method="post" th:object="${blog}">
+        <h2 class="my-5" th:text="${'Edit Blog ' + blog.title}"></h2>
+        <div class="row">
+
+            <div class="mb-3">
+                <label for="titleBlog" class="form-label">Title Blog</label>
+                <input type="text" th:field="*{title}" class="form-control" id="titleBlog">
+            </div>
+            <div class="mb-3">
+                <label for="contentBlog" class="form-label">Content</label>
+                <textarea th:field="*{content}" class="form-control" id="contentBlog"
+                          rows="3"></textarea>
+            </div>
+            <div class="mb-3">
+                <label for="summaryBlog" class="form-label">Summary</label>
+                <input type="text" th:field="*{summary}" class="form-control" id="summaryBlog">
+            </div>
+            <div class="mb-3">
+                <label for="authorBlog" class="form-label">Author</label>
+                <input type="text" th:field="*{author}" class="form-control" id="authorBlog">
+            </div>
+            <div class="mb-3">
+                <label for="imgBlog" class="form-label">IMG</label>
+                <input type="text" th:field="*{img}" class="form-control" id="imgBlog">
+            </div>
+            <div class="mb-3">
+                <label for="time" class="form-label">Time Post</label>
+                <input type="datetime-local" th:field="*{timePost}" class="form-control" id="time">
+            </div>
+            <div class="mb-3">
+                <label for="category" class="form-label">Category</label>
+                <select id="category" class="form-select" th:field="*{category}">
+                    <option th:each="value,loop:${category}" th:value="${value.id}" th:text="${value.name}"></option>
+                </select>
+            </div>
+
+            <div class="mb-3">
+                <button class="btn btn-primary" type="submit">Update</button>
+            </div>
+        </div>
+    </form>
+</div>
+
+<footer th:include="/layout/footer.html"></footer>
+</body>
+</html>

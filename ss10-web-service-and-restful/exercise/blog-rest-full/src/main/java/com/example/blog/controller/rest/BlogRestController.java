@@ -34,7 +34,7 @@ public class BlogRestController {
     public ResponseEntity<Blog> getDetailBlog(@PathVariable Integer id){
        Optional<Blog> blog = blogService.findBlog(id);
         if (!blog.isPresent()) {
-            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }
         return new ResponseEntity<>(blog.get(),HttpStatus.OK);
     }

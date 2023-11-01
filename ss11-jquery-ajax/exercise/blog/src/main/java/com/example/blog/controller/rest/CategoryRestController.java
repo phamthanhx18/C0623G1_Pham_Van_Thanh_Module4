@@ -38,7 +38,7 @@ public class CategoryRestController {
     public ResponseEntity<List<Blog>> findAllBlogByCategoryId(@PathVariable Integer id){
         List<Blog> blogs = blogService.getBlogByCategoryId(id);
         if (blogs.isEmpty()){
-            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }
         return new ResponseEntity<>(blogs,HttpStatus.OK);
     }

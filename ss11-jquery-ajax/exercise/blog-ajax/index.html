@@ -65,20 +65,10 @@
                 url: "http://localhost:8080/api/blog",
                 type: "GET",
                 dataType: "json",
-                success: function (data) {
-                    let tr = [];
-                    for (let i = 0; i < data.length; i++) {
-                        tr.push("<tr>")
-                        tr.push("<td>"+ data[i].id + "</td>")
-                        tr.push("<td>"+ data[i].title + "</td>")
-                        tr.push("<td>"+ data[i].content + "</td>")
-                        tr.push("<td>"+ data[i].summary + "</td>")
-                        tr.push("<td>"+ data[i].author + "</td>")
-                        tr.push("<td><img width='50px' src=\'"+ data[i].img + "\'></td>")
-                        tr.push("<td>"+ data[i].timePost + "</td>")
-                        tr.push("</tr>")
-                    }
-                    $(".body-list").append(tr.join(""))
+                success: function (res) {
+                    let data = res.content
+                    showData(data);
+                    loadMore(res.number, res.totalPages);
                 }
             })
         }
@@ -94,20 +84,8 @@
                 },
                 "statusCode": {
                     200: function (data) {
-                        let tr = [];
-                        for (let i = 0; i < data.content.length; i++) {
-                            tr.push("<tr>")
-                            tr.push("<td>"+ data[i].id + "</td>")
-                            tr.push("<td>"+ data[i].title + "</td>")
-                            tr.push("<td>"+ data[i].content + "</td>")
-                            tr.push("<td>"+ data[i].summary + "</td>")
-                            tr.push("<td>"+ data[i].author + "</td>")
-                            tr.push("<td><img width='50px' src=\'"+ data[i].img + "\'></td>")
-                            tr.push("<td>"+ data[i].timePost + "</td>")
-                            tr.push("</tr>")
-                        }
                         $(".body-list").empty()
-                        $(".body-list").append(tr.join(""))
+                        showData(data)
                     },
                     204: function (data) {
                         $(".body-list").empty()
@@ -117,9 +95,45 @@
             })
         })
         $("#load-more").click(function () {
-            let page =
+            let page = $("#load-more").val()
+            $.ajax({
+                url: "http://localhost:8080/api/blog",
+                type: "GET",
+                dataType: "json",
+                data: {
+                    page: page + 1
+                },
+                success: function (res) {
+                    let data = res.content
+                    showData(data);
+                    loadMore(res.number,res.totalPages);
+                }
+            })
         })
     })
+
+    function loadMore(currenPage,totalPages) {
+        $("#load-more").val(currenPage)
+        if (currenPage === totalPages - 1) {
+            $("#load-more").hide()
+        }
+    }
+
+    function showData(data) {
+        let tr = [];
+        for (let i = 0; i < data.length; i++) {
+            tr.push("<tr>")
+            tr.push("<td>" + data[i].id + "</td>")
+            tr.push("<td>" + data[i].title + "</td>")
+            tr.push("<td>" + data[i].content + "</td>")
+            tr.push("<td>" + data[i].summary + "</td>")
+            tr.push("<td>" + data[i].author + "</td>")
+            tr.push("<td><img width='50px' src=\'" + data[i].img + "\'></td>")
+            tr.push("<td>" + data[i].timePost + "</td>")
+            tr.push("</tr>")
+        }
+        $(".body-list").append(tr.join(""))
+    }
 </script>
 </body>
 </html>
